@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+import RecordPreview from '$lib/components/RecordPreview.svelte'
+export let data
+</script>
+
+<h1>Records</h1>
+
+<div class="artists">
+	{#each data.artists as artist}
+	<RecordPreview name={artist.name} url={artist.url} />
+	{/each}
+</div>
