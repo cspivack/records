@@ -1,5 +1,7 @@
-import { kebabCase, map } from 'lodash'
+import lodash from 'lodash'
 import artists from '$lib/data/artists.json'
+
+const { kebabCase, map } = lodash
 
 export async function load() {
 	const mapped = map(artists, (a) => {

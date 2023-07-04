@@ -1,6 +1,8 @@
 import { error } from '@sveltejs/kit'
-import { find, kebabCase } from 'lodash'
+import lodash from 'lodash'
 import artists from '$lib/data/artists.json'
+
+const { find, kebabCase } = lodash
 
 export async function load({ params }) {
   const artist = find(artists, a => params.artist === kebabCase(a.name))
