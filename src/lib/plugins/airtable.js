@@ -22,7 +22,7 @@ class Airtable {
       return {
         name,
         url: '/' + kebabCase(name),
-        record: { cover: record.get('Cover') }
+        record: { title: record.get('Title'), cover: record.get('Cover') }
       }
     })
   }

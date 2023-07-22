@@ -6,6 +6,10 @@
   const records = data.records
 </script>
 
+<svelte:head>
+  <title>{artist} | Record Collection</title>
+</svelte:head>
+
 <h1>{artist}</h1>
 
 <div class="records">
