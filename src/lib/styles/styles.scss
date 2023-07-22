@@ -15,6 +15,12 @@ strong {
 	font-weight: 600;
 }
 
+h1 {
+  @media only screen and (max-width: 449px) {
+    font-size: 1.5rem;
+  }
+}
+
 #header,
 #main {
 	display: flex;
@@ -35,10 +41,26 @@ strong {
 .artists,
 .records {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	column-gap: 1rem;
-	row-gap: 2rem;
+	row-gap: 1.2rem;
   align-items: flex-end;
+  .cover {
+    display: none;
+    @media only screen and (min-width: 450px) {
+      display: block;
+    }
+  }
+  @media only screen and (min-width: 450px) {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2rem;
+  }
+  @media only screen and (min-width: 700px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .item {
@@ -53,5 +75,12 @@ strong {
 
 .cover {
 	max-width: 100%;
+  width: 100%;
 	height: auto;
+}
+
+.record-view {
+  .cover {
+    width: auto;
+  }
 }

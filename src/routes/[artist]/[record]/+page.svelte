@@ -10,8 +10,8 @@
 <h1><a href={artist.url} class="link">{artist.name}</a> / {record.title}</h1>
 
 {#if record.cover}
-<figure class="item">
-    <img class="cover" src="{img.url}" width="{img.width}" height="{img.height}" alt="Cover for {record.title} by {artist}" />
+<figure class="item record-view">
+    <img class="cover" src="{img.url}" width="{img.width}" height="{img.height}" alt="Cover for {record.title} by {artist.name}" />
 </figure>
 {/if}
 
