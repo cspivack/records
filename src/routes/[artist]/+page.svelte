@@ -10,6 +10,6 @@
 
 <div class="records">
 	{#each records as record}
-		<RecordPreview name={record.title} url={record.url} />
+		<RecordPreview artist="{artist}" name="{record.title}" url="{record.url}" record="{record}" />
 	{/each}
 </div>

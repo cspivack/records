@@ -1,7 +1,7 @@
 <header id="header">
 	<div class="container">
 		<nav>
-			<a href="/">Home</a>
+			<a href="/" class="link">Home</a>
 		</nav>
 	</div>
 </header>
