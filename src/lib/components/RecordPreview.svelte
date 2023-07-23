@@ -3,7 +3,7 @@ export let artist
 export let name
 export let url
 export let record
-const img = record.cover ? record.cover[0].thumbnails.large : null
+const img = record.cover || null
 </script>
 
 <figure class="item">

@@ -2,6 +2,7 @@ import lodash from 'lodash'
 import AirtableCore from 'airtable'
 import { format, parseISO } from 'date-fns'
 import { AIRTABLE_TOKEN, BASE_ID } from '$env/static/private'
+import Downloader from '$lib/plugins/downloader'
 
 const { find, kebabCase, map, shuffle } = lodash
 
@@ -16,15 +17,23 @@ class Airtable {
     const records = await this.base('Records').select().all()
     const shuffledRecords = shuffle(records)
 
-    return map(results, (result) => {
+    const artists = []
+
+    for (let i=0; i<results.length; i++) {
+      const result = results[i]
       const name = result.get('Name')
       const record = find(shuffledRecords, r => r.get('Artist')[0] === result.id)
-      return {
+
+      const cover = await Downloader.cover(result, record)
+
+      artists.push({
         name,
         url: '/' + kebabCase(name),
-        record: { title: record.get('Title'), cover: record.get('Cover') }
-      }
-    })
+        record: { title: record.get('Title'), cover }
+      })
+    }
+
+    return artists
   }
 
   async artist (slug) {
@@ -34,26 +43,36 @@ class Airtable {
   }
 
   async records (artist, artistSlug) {
-    const records = await this.artistRecords(artist)
+    const results = await this.artistRecords(artist)
 
-    return map(records, (r) => {
+    const records = []
+
+    for (let i=0; i<results.length; i++) {
+      const r = results[i]
+
       const title = r.get('Title')
-      return {
+      const cover = await Downloader.cover(artist, r)
+
+      records.push({
         title,
         url: '/' + artistSlug + '/' + kebabCase(title),
-        cover: r.get('Cover')
-      }
-    })
+        cover
+      })
+    }
+
+    return records
   }
 
   async record (artist, params) {
     const records = await this.artistRecords(artist)
     const record = find(records, r => kebabCase(r.get('Title')) === params.record)
 
+    const cover = await Downloader.cover(artist, record)
+
     if (record) {
       return {
         title: record.get('Title'),
-        cover: record.get('Cover'),
+        cover,
         date: format(parseISO(record.get('Release date')), 'LLL do, Y'),
         dupe: record.get('Duplicate'),
         notes: record.get('Notes')

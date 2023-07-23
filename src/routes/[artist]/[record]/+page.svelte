@@ -4,7 +4,7 @@
   const artist = data.artist
   const record = data.record
 
-  const img = record.cover ? record.cover[0].thumbnails.large : null
+  const img = record.cover || null
 </script>
 
 <svelte:head>
