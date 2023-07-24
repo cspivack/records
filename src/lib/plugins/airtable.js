@@ -73,7 +73,7 @@ class Airtable {
       return {
         title: record.get('Title'),
         cover,
-        date: format(parseISO(record.get('Release date')), 'LLL do, Y'),
+        date: format(parseISO(record.get('Release date')), 'LLLL do, Y'),
         dupe: record.get('Duplicate'),
         notes: record.get('Notes')
       }
