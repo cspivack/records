@@ -1,7 +1,6 @@
 import https from 'https'
 import fs from 'fs'
 import path from 'path'
-import axios from 'axios'
 import lodash from 'lodash'
 
 const { kebabCase } = lodash
