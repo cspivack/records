@@ -12,4 +12,5 @@ Data is housed in Airtable, which makes it easy to manage the artist/record rela
 - ~Add page transitions~
 - Implement Airtable attachment ➡️ DigitalOcean Spaces pipeline
 - Add missing album artwork
+- Update favicon
 - Find an open-source alternative before Airtable starts to mess with their free tier
