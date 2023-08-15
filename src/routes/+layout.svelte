@@ -8,6 +8,7 @@ $: pathname = data.pathname
 </script>
 
 <svelte:head>
+<meta name="robots" content="noindex,nofollow" />
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=jost:400,600" rel="stylesheet" />
 </svelte:head>
