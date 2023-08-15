@@ -1,6 +1,10 @@
 <script>
+import { fade } from 'svelte/transition'
 import Header from '$lib/components/Header.svelte'
 import '$lib/styles/styles.scss'
+
+export let data
+$: pathname = data.pathname
 </script>
 
 <svelte:head>
@@ -12,6 +16,13 @@ import '$lib/styles/styles.scss'
 
 <main id="main">
 	<div class="container">
-		<slot />
+    {#key pathname}
+  		<div
+        in:fade={{ duration: 200, delay: 300 }}
+        out:fade={{ duration: 200 }}
+      >
+        <slot />
+      </div>
+    {/key}
 	</div>
 </main>
