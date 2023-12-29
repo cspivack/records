@@ -7,9 +7,9 @@ const img = record.cover || null
 </script>
 
 <figure class="item">
-	{#if record.cover}
+	{#if img && img.url}
 		<a href={url}>
-			<img class="cover" src="{img.url}" width="{img.width}" height="{img.height}" alt="Cover for “{record.title}” by {artist}" loading="lazy" />
+			<img class="cover{ record.border ? ' border' : '' }" src="{img.url}" width="{img.width}" height="{img.height}" alt="Cover for “{record.title}” by {artist}" loading="lazy" />
 		</a>
 	{/if}
 	<figcaption>

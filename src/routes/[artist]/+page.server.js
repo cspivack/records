@@ -1,18 +1,18 @@
 import { error } from '@sveltejs/kit'
-import Airtable from '$lib/plugins/airtable'
+import Prismic from '$lib/plugins/prismic'
 
 export async function load({ params }) {
-  const artist = await Airtable.artist(params.artist)
+  const artist = await Prismic.artist(params.artist)
 
   if (artist) {
-    const records = await Airtable.records(artist, params.artist)
+    const records = await Prismic.recordsBy(params.artist)
 
     return {
-      artist: artist.get('Name'),
+      artist: artist.data.name,
       slug: params.artist,
       records
     }
   }
 
-  throw error(404, 'Not found');
+  throw error(404, 'Not found')
 }
