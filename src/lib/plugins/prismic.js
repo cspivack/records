@@ -65,7 +65,6 @@ class Prismic {
     const r = await this.client.getByUID('record', record, {
       filters: [prismic.filter.at('my.record.artist', artist.id)]
     })
-    console.log(r)
     return {
       title: r.data.title,
       cover: r.data.cover,

@@ -88,3 +88,14 @@ h1 {
     width: auto;
   }
 }
+
+.record-info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  .notes-wrapper {
+    p:first-child {
+      margin-top: 0;
+    }
+  }
+}

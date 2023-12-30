@@ -1,4 +1,5 @@
 <script>
+  import { PrismicRichText } from '@prismicio/svelte'
   import RecordPreview from '$lib/components/RecordPreview.svelte'
   export let data
   const artist = data.artist
@@ -19,9 +20,14 @@
 </figure>
 {/if}
 
-<div>
-  Released: {record.date}<br />
+<div class="record-info">
+  <div class="line"><strong>Released</strong><br />{record.date}</div>
   {#if record.notes}
-    Notes: {record.notes}
+    <div class="line">
+      <strong>Notes</strong>
+      <div class="notes-wrapper">
+        <PrismicRichText field="{record.notes}" />
+      </div>
+    </div>
   {/if}
 </div>
